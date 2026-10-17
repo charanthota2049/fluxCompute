@@ -34,7 +34,9 @@ public class SecurityConfig {
                         // Public endpoints
                         .requestMatchers(
                                 "/auth/register",
-                                "/auth/login"
+                                "/auth/login",
+                                "/ws/agent", "/ws/agent/**",
+                                "/"
                         ).permitAll()
                         // Admin-only endpoints
                         .requestMatchers("/admin/**").hasRole("ADMIN")

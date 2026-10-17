@@ -29,9 +29,10 @@ public class UserController {
     
     @PostMapping("/auth/register")
     public String register(@RequestBody User user) {
+        System.out.println("----------"+user.getName());
         user.setPassword(encoder.encode(user.getPassword()));
         userService.save(user);
-        return "";
+        return "";  
     }
 
     @PostMapping("/auth/login")
