@@ -32,7 +32,6 @@ public class WorkloadController {
 
         WorkloadResponse response =
                 workloadService.uploadWorkload(name, file);
-
         return ResponseEntity.ok(response);
     }
 
@@ -67,6 +66,8 @@ public class WorkloadController {
     @GetMapping("/{id}/download")
     public ResponseEntity<Resource> downloadWorkload(
             @PathVariable Long id) {
+        
+        System.out.println("hit the download workload end point==================================");
 
         Resource resource =
                 workloadService.downloadWorkload(id);
@@ -79,6 +80,7 @@ public class WorkloadController {
                                 resource.getFilename() + "\""
                 )
                 .body(resource);
+        
     }
 
     // ---------------------------------------------------------

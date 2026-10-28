@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 "/auth/register",
                                 "/auth/login",
                                 "/ws/agent", "/ws/agent/**",
+                                "/api/workloads/**",
+                                "/api/jobs/**",
                                 "/"
                         ).permitAll()
                         // Admin-only endpoints
@@ -44,8 +46,8 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                         // Everything else requires authentication
                         .anyRequest().authenticated())
-            .formLogin(Customizer.withDefaults())
-            .httpBasic(Customizer.withDefaults())
+            // .formLogin(Customizer.withDefaults())
+            // .httpBasic(Customizer.withDefaults())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .build();

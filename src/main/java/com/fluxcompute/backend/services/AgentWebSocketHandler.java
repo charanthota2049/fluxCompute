@@ -59,7 +59,8 @@ public class AgentWebSocketHandler extends TextWebSocketHandler {
     public void handleTextMessage(WebSocketSession session,TextMessage message){
         JsonNode json = objectMapper.readTree(message.getPayload());
         System.out.println("-------------------------------");
-        if(json.path("type").equals("RESOURCE_STATUS")){
+        System.out.println(message.getPayload());
+        if(json.path("type").asString().equals("RESOURCE_STATUS")){
             double cpuUsage = json.path("cpuUsage").asDouble();
             long totalMemory = json.path("totalMemory").asLong();
             long availableMemory = json.path("availableMemory").asLong();

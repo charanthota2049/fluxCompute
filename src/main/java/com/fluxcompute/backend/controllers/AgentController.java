@@ -19,7 +19,7 @@ public class AgentController {
     @PostMapping("/send-job")
     public String postMethodName(@RequestBody String entity) {
         System.out.println("-------------");
-        agentCommunicationService.sendJobToAgent(1L,2L,1L);
+        agentCommunicationService.sendJobToAgent(1L,2L,2L);
         return "job notification sent";
     }
     
